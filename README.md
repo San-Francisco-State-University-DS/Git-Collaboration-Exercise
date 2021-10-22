@@ -67,3 +67,14 @@ Review the code from the author of this branch.
 7. Approve the merge
 
 Merge the branch once the team agrees to the update.
+
+8. Update Local Repository
+
+Terminal:
+
+``` sh
+git fetch 
+git log --all --graph
+git pull origin main
+git log --all --graph
+```
