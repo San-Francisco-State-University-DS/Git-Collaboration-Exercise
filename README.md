@@ -6,14 +6,62 @@ Process:
 
 1. Clone this repository to your local machine.
 
-2. Create a branch of this repository
+Terminal:
 
-3. Modify the file(s) in the repository
+``` sh
+cd ~/.../project_folder
+git clone <SSH>
+
+OR
+
+git clone <HTTPS>
+```
+
+2. Create and checkout the branch of this repository
+
+Terminal:
+
+``` sh
+git branch <name of branch>
+git checkout <name of branch>
+```
+
+3. Add the modified file(s) to the branch
+
+Terminal:
+
+``` sh
+git add .
+git commit -m "message for the update"
+git log --all --graph
+```
 
 4. Merge the branch to the main repository on GitHub
 
+Terminal:
+
+``` sh
+git checkout main
+git merge <name of branch> -m "message for the update"
+
+OR
+
+git push -u origin <name of branch>
+
+git log --all --graph
+```
+
 5. Create a Pull Request on GitHub
+
+Go back to the GitHub remote repository and check to see if the branch is created.
+Click on the green "Pull Request" button to create a pull request.
+OR
+Click on "Pull request" tab at the top of the repository and click the green "Create pull request" button.
 
 6. Review and discuss the changes
 
+Review the code from the author of this branch.
+
 7. Approve the merge
+
+Merge the branch once the team agrees to the update.
