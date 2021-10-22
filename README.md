@@ -15,6 +15,8 @@ git clone <SSH>
 OR
 
 git clone <HTTPS>
+
+cd <Repo Name>
 ```
 
 2. Create and checkout the branch of this repository
