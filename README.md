@@ -74,6 +74,7 @@ Terminal:
 
 ``` sh
 git fetch 
+git checkout main
 git log --all --graph
 git pull origin main
 git log --all --graph
