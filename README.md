@@ -10,11 +10,11 @@ Terminal:
 
 ``` sh
 cd ~/.../project_folder
-git clone <SSH>
+git clone <SSH> # if using SSH key
 
 OR
 
-git clone <HTTPS>
+git clone <HTTPS> # if using PAT
 
 cd <Repo Name>
 ```
