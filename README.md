@@ -24,8 +24,8 @@ cd <Repo Name>
 Terminal:
 
 ``` sh
-git branch <name of branch>
-git checkout <name of branch>
+git branch <name of branch>. # create a new branch locally
+git checkout <name of branch> # swich to the new created branch
 ```
 
 3. Add the modified file(s) to the branch
@@ -33,9 +33,9 @@ git checkout <name of branch>
 Terminal:
 
 ``` sh
-git add .
-git commit -m "message for the update"
-git log --all --graph
+git add .  # add any update to the new branch
+git commit -m "message for the update"  # commit the change with a message
+git log --all --graph  # check the staging status in the new branch
 ```
 
 4. Merge the branch to the main repository on GitHub
@@ -43,14 +43,14 @@ git log --all --graph
 Terminal:
 
 ``` sh
-git checkout main
-git merge <name of branch> -m "message for the update"
+git checkout main  # switch back to main branch locally
+git merge <name of branch> -m "message for the update"  # merge the changes in new branch to main locally
 
 OR
 
-git push -u origin <name of branch>
+git push -u origin <name of branch>  # push the change from new branch to the remote, namely "origin"
 
-git log --all --graph
+git log --all --graph  # check all the log status 
 ```
 
 5. Create a Pull Request on GitHub
