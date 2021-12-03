@@ -45,11 +45,7 @@ Terminal:
 ``` sh
 git checkout main  # switch back to main branch locally
 git merge <name of branch> -m "message for the update"  # merge the changes in new branch to main locally
-
-OR
-
 git push -u origin <name of branch>  # push the change from new branch to the remote, namely "origin"
-
 git log --all --graph  # check all the log status 
 ```
 
@@ -68,7 +64,7 @@ Review the code from the author of this branch.
 
 Merge the branch once the team agrees to the update.
 
-8. Update Local Repository
+8. Update Local Repository (ONLY IF the change has not been merged locally!!)
 
 Terminal:
 
