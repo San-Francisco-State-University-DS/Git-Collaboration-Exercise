@@ -10,6 +10,7 @@ Terminal:
 
 ``` sh
 cd ~/.../project_folder
+
 git clone <SSH> # if using SSH key
 
 OR
