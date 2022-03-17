@@ -50,6 +50,12 @@ git push -u origin <name of branch>  # push the change from new branch to the re
 git log --all --graph  # check all the log status 
 ```
 
+Alternative, when the local branch is not connected with the remote origin,
+
+``` sh 
+git push --set-upstream origin <name of branch>
+```
+
 5. Create a Pull Request on GitHub
 
 Go back to the GitHub remote repository and check to see if the branch is created.
