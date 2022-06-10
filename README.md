@@ -50,9 +50,10 @@ git push -u origin <name of branch>  # push the change from new branch to the re
 git log --all --graph  # check all the log status 
 ```
 
-Alternative, when the local branch is not connected with the remote origin,
+Alternative, when the local branch is not connected with the remote origin or not up-to-date with the origin main branch, run the following in the local development branch.
 
 ``` sh 
+git pull origin main
 git push --set-upstream origin <name of branch>
 ```
 
