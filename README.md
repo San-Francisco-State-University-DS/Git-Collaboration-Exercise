@@ -86,7 +86,7 @@ When a new development branch is created by your team member, we can fetch the n
 Terminal:
 
 ``` sh
-git fetch  # fetching all updated remote branches to the local repo
+git fetch origin <name of branch>  # fetching all updated remote branches to the local repo
 git branch  # Check to see if the branch is fetched
 git checkout <name of branch>
 ```
