@@ -2,7 +2,7 @@
 Please make your own branch from this main repo and add your update to the main branch.
 
 
-Process:
+## New Branch Process:
 
 1. Clone this repository to your local machine.
 
@@ -83,5 +83,3 @@ git log --all --graph
 git pull origin main
 git log --all --graph
 ```
-
-Note: This is just the basic collaboration workflow.  In practice, there could be many different situation that you may need beyond the codes covered in this repository.  However, don't be worried about making errors in the first few collaborative projects, which you can always explore solutions from the Git community.
