@@ -123,7 +123,7 @@ GitHub provides some nice UI for the pull reqeust revision.  Check out the docum
 ## Reset, Rebase, Revert
 In a git reset workflow, three internal management mechanisms of git come into the picture: HEAD, staging area (index), and the working directory.
 
-[git_reset](images/git_workflow.png)
+![git_reset](./images/git_workflow.png)
 
 The **working directory** is the place where you are currently working, it is the place where your files are present. Using a git status command, you can see what all files/folders are present in the working directory.
 
@@ -131,10 +131,10 @@ The **working directory** is the place where you are currently working, it is th
 
 The current branch in Git is referred to as **HEAD**. It points to the last commit, which happened in the current checkout branch. It is treated as a pointer for any reference. Once you checkout to another branch, the HEAD also moves to the new branch.
 
-### Soft Reset vs. Hard Reset
+### 1. Soft Reset vs. Hard Reset
 Generally speaking, if you need reset the working directory pointing to different commit stage, you should always do a **soft reset**.  The difference between a hard reset and a soft reset is that **hard reset** allows us to change the commit history and point to the specified commit, but it also removes all the commits with happended after the specific commit. Soft reset allows us to point to the specified commit in history, but keeps the files in the working directory. There is no risk of losing the files in the soft mode.  
 
-[git_reset](images/git_reset.png)
+![git_reset](./images/git_reset.png)
 
 Terminal: (Hard Reset)
 Assume a file is deleted in the local main branch by accident.
@@ -172,7 +172,7 @@ git reset --hard^  # back to the most recent commit
 git log --all --graph
 ```
 
-### Git Revert
+### 2. Git Revert
 In Git, the **revert** command is used to perform a revert operation, i.e., to revert some changes. It is similar to the reset command, but the only difference here is that you perform a new commit to go back to a particular commit. In short, it is fair to say that the git revert command is a commit.
 
 [git_revert](images/git_revert.png)
@@ -195,7 +195,7 @@ git revert HEAD  # revert to the latest commit
 git log --all --graph
 ```
 
-### Git Rebase
+### 3. Git Rebase
 In Git, **rebase** is the way of moving or combining commits of one branch over another branch. As a developer, I would not create my features on the master branch in a real-world scenario. I would work on my own branch (a ‘feature branch’), and when I have a few commits in my feature branch with the feature added, I would then like to move it to the master branch.
 
 Rebase can sometimes be a little confusing to understand because it is very similar to a merge. The goal of merging and rebasing both is to take the commits from my feature branch and put them on to a master branch or any other branch. 
@@ -204,7 +204,7 @@ Suppose you are working in a team with other developers. In that case, you can i
 
 So, this is where rebase is going to help. This time, instead of doing a git merge, I will do a rebase, where I want to take my two feature branch commits and move them onto the master branch. A rebase will take all my commits from the feature branch and move them on top of the master branch commits. So, behind the scenes, git is duplicating the feature branch commits on the master branch.
 
-[git_rebase](images/git_rebase.png)
+![git_rebase](./images/git_rebase.png)
 
 Terminal:
 Assume a new file is added to the local dev branch and would like to add to the local main branch.
