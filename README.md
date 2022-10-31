@@ -86,7 +86,11 @@ When a new development branch is created by your team member, we can fetch the n
 Terminal:
 
 ``` sh
+<<<<<<< HEAD
 git fetch origin <name of branch>  # fetching all updated remote branches to the local repo
+=======
+git fetch origin <name of branch> # fetching all updated remote branches to the local repo
+>>>>>>> c214fae64ddc86f5f27aecbaf7829e3fd669db1f
 git branch  # Check to see if the branch is fetched
 git checkout <name of branch>
 ```
@@ -120,4 +124,117 @@ The good practice could be scheduling a code review section once a pull request 
 
 GitHub provides some nice UI for the pull reqeust revision.  Check out the documentation from GitHub for detail. 
 
+## Reset, Rebase, Revert
+In a git reset workflow, three internal management mechanisms of git come into the picture: HEAD, staging area (index), and the working directory.
 
+![git_reset](./images/git_workflow.png)
+
+The **working directory** is the place where you are currently working, it is the place where your files are present. Using a git status command, you can see what all files/folders are present in the working directory.
+
+**Staging Area (Index)** is where git tracks and saves all the changes in the files. The saved changes are reflected in the .git directory. You use git add “filename” to add the file to the staging area. And like before, when you run git status, you will see which files are present in the staging area.
+
+The current branch in Git is referred to as **HEAD**. It points to the last commit, which happened in the current checkout branch. It is treated as a pointer for any reference. Once you checkout to another branch, the HEAD also moves to the new branch.
+
+### 1. Soft Reset vs. Hard Reset
+Generally speaking, if you need reset the working directory pointing to different commit stage, you should always do a **soft reset**.  The difference between a hard reset and a soft reset is that **hard reset** allows us to change the commit history and point to the specified commit, but it also removes all the commits with happended after the specific commit. Soft reset allows us to point to the specified commit in history, but keeps the files in the working directory. There is no risk of losing the files in the soft mode.  
+
+![git_reset](./images/git_reset.png)
+
+Terminal: (Hard Reset)
+Assume a file is deleted in the local main branch by accident.
+
+```
+# check your current main branch status
+git status 
+
+# log the current commits
+git log --all --graph
+
+# reset the to the previous commit
+git reset --hard <specified SHA key>  # back to secified commit
+git reset --hard^  # back to the most recent commit
+
+# check the log history to confirm HEAD pointer
+git log --all --graph
+```
+
+Terminal: (Soft Reset)
+Assume a file is added to the local branch by accident.
+
+```
+# check your current main branch status
+git status 
+
+# log the current commits
+git log --all --graph
+
+# reset the to the previous commit
+git reset --soft <specified SHA key>  # back to secified commit
+git reset --hard^  # back to the most recent commit
+
+# check the log history to confirm HEAD pointer
+git log --all --graph
+```
+
+### 2. Git Revert
+In Git, the **revert** command is used to perform a revert operation, i.e., to revert some changes. It is similar to the reset command, but the only difference here is that you perform a new commit to go back to a particular commit. In short, it is fair to say that the git revert command is a commit.
+
+[git_revert](images/git_revert.png)
+
+Terminal: 
+Assume an update of a code file is pushed / merged to the remote dev branch.
+
+```
+# check your current main branch status
+git status 
+
+# log the current commits
+git log --all --graph
+
+# revert the to the previous commit
+git revert <specified SHA key> # revert to specified commit
+git revert HEAD  # revert to the latest commit
+
+# check the log history to confirm HEAD pointer
+git log --all --graph
+```
+
+### 3. Git Rebase
+In Git, **rebase** is the way of moving or combining commits of one branch over another branch. As a developer, I would not create my features on the master branch in a real-world scenario. I would work on my own branch (a ‘feature branch’), and when I have a few commits in my feature branch with the feature added, I would then like to move it to the master branch.
+
+Rebase can sometimes be a little confusing to understand because it is very similar to a merge. The goal of merging and rebasing both is to take the commits from my feature branch and put them on to a master branch or any other branch. 
+
+Suppose you are working in a team with other developers. In that case, you can imagine that this could get really complex where you have a bunch of other developers working on different feature branches, and they have been merging multiple changes. It becomes confusing to trace.
+
+So, this is where rebase is going to help. This time, instead of doing a git merge, I will do a rebase, where I want to take my two feature branch commits and move them onto the master branch. A rebase will take all my commits from the feature branch and move them on top of the master branch commits. So, behind the scenes, git is duplicating the feature branch commits on the master branch.
+
+![git_rebase](./images/git_rebase.png)
+
+Terminal:
+Assume a new file is added to the local dev branch and would like to add to the local main branch.
+
+```
+# check your current dev branch status
+git status 
+
+# add the new file to the staging
+git add .
+
+# commit the change
+git commit -m <commit message>
+
+# log the current commits
+git log --all --graph
+
+# add the new file to the main using rebase command
+git rebase main  # note: rebase command should be run from the dev branch
+
+# checkout the local main branch
+git checkout main
+
+# rebase the master branch against the dev branch
+git rebase <dev branch name>
+
+# confirm the dev branch have been added to the main branch successfully
+git log --all --graph
+```
