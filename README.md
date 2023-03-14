@@ -50,6 +50,13 @@ git push -u origin <name of branch>  # push the change from new branch to the re
 git log --all --graph  # check all the log status 
 ```
 
+Alternative, when the local branch is not connected with the remote origin or not up-to-date with the origin main branch, run the following in the local development branch.
+
+``` sh 
+git pull origin main
+git push --set-upstream origin <name of branch>
+```
+
 5. Create a Pull Request on GitHub
 
 Go back to the GitHub remote repository and check to see if the branch is created.
@@ -76,7 +83,6 @@ git log --all --graph
 git pull origin main
 git log --all --graph
 ```
-
 ## Fetch, Commits, Pull Request
 
 1. Fetch a Remote Branch
@@ -86,11 +92,7 @@ When a new development branch is created by your team member, we can fetch the n
 Terminal:
 
 ``` sh
-<<<<<<< HEAD
 git fetch origin <name of branch>  # fetching all updated remote branches to the local repo
-=======
-git fetch origin <name of branch> # fetching all updated remote branches to the local repo
->>>>>>> c214fae64ddc86f5f27aecbaf7829e3fd669db1f
 git branch  # Check to see if the branch is fetched
 git checkout <name of branch>
 ```
@@ -238,3 +240,4 @@ git rebase <dev branch name>
 # confirm the dev branch have been added to the main branch successfully
 git log --all --graph
 ```
+
